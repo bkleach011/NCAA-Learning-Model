@@ -1,0 +1,80 @@
+---------- Round 1 ----------
+
+Duke should beat Siena (87.91% Chance) in Round 1
+Ohio State should beat Texas Christian (60.49% Chance) in Round 1
+St. John's (NY) should beat Northern Iowa (80.03% Chance) in Round 1
+Kansas should beat California Baptist (84.16% Chance) in Round 1
+Louisville should beat South Florida (57.72% Chance) in Round 1
+Michigan State should beat North Dakota State (85.78% Chance) in Round 1
+UCLA should beat UCF (57.20% Chance) in Round 1
+Connecticut should beat Furman (84.59% Chance) in Round 1
+Arizona should beat Long Island University (95.74% Chance) in Round 1
+Utah State should beat Villanova (55.50% Chance) in Round 1
+Wisconsin should beat High Point (77.17% Chance) in Round 1
+Arkansas should beat Hawaii (74.18% Chance) in Round 1
+Brigham Young should beat Texas (57.25% Chance) in Round 1
+Gonzaga should beat Kennesaw State (88.10% Chance) in Round 1
+Miami (FL) should beat Missouri (58.38% Chance) in Round 1
+Purdue should beat Queens (NC) (87.84% Chance) in Round 1
+Florida should beat Prairie View A&M (96.38% Chance) in Round 1
+Iowa should beat Clemson (51.01% Chance) in Round 1
+Vanderbilt should beat McNeese (70.60% Chance) in Round 1
+Nebraska should beat Troy (83.45% Chance) in Round 1
+North Carolina should beat Virginia Commonwealth (67.25% Chance) in Round 1
+Illinois should beat Pennsylvania (95.51% Chance) in Round 1
+Texas A&M should beat Saint Mary's (51.90% Chance) in Round 1
+Houston should beat Idaho (90.21% Chance) in Round 1
+Michigan should beat Howard (95.70% Chance) in Round 1
+Georgia should beat Saint Louis (76.67% Chance) in Round 1
+Texas Tech should beat Akron (72.19% Chance) in Round 1
+Alabama should beat Hofstra (86.06% Chance) in Round 1
+Tennessee should beat Miami (OH) (84.04% Chance) in Round 1
+Virginia should beat Wright State (81.59% Chance) in Round 1
+Kentucky should beat Santa Clara (63.88% Chance) in Round 1
+Iowa State should beat Tennessee State (79.64% Chance) in Round 1
+
+---------- Round 2 ----------
+
+Duke should beat Ohio State (65.14% Chance) in Round 2
+Kansas should beat St. John's (NY) (52.27% Chance) in Round 2
+Michigan State should beat Louisville (52.22% Chance) in Round 2
+Connecticut should beat UCLA (57.04% Chance) in Round 2
+Arizona should beat Utah State (72.21% Chance) in Round 2
+Wisconsin should beat Arkansas (53.10% Chance) in Round 2
+Brigham Young should beat Gonzaga (50.32% Chance) in Round 2
+Purdue should beat Miami (FL) (59.76% Chance) in Round 2
+Florida should beat Iowa (72.44% Chance) in Round 2
+Vanderbilt should beat Nebraska (58.76% Chance) in Round 2
+Illinois should beat North Carolina (71.48% Chance) in Round 2
+Houston should beat Texas A&M (77.97% Chance) in Round 2
+Michigan should beat Georgia (61.02% Chance) in Round 2
+Alabama should beat Texas Tech (69.45% Chance) in Round 2
+Tennessee should beat Virginia (57.47% Chance) in Round 2
+Kentucky should beat Iowa State (60.81% Chance) in Round 2
+
+---------- the Sweet Sixteen ----------
+
+Duke should beat Kansas (58.71% Chance) in the Sweet Sixteen
+Michigan State should beat Connecticut (51.81% Chance) in the Sweet Sixteen
+Arizona should beat Wisconsin (62.74% Chance) in the Sweet Sixteen
+Brigham Young should beat Purdue (58.30% Chance) in the Sweet Sixteen
+Florida should beat Vanderbilt (65.96% Chance) in the Sweet Sixteen
+Illinois should beat Houston (54.63% Chance) in the Sweet Sixteen
+Michigan should beat Alabama (54.76% Chance) in the Sweet Sixteen
+Tennessee should beat Kentucky (50.21% Chance) in the Sweet Sixteen
+
+---------- the Elite Eight ----------
+
+Duke should beat Michigan State (67.59% Chance) in the Elite Eight
+Arizona should beat Brigham Young (56.00% Chance) in the Elite Eight
+Florida should beat Illinois (52.09% Chance) in the Elite Eight
+Michigan should beat Tennessee (61.68% Chance) in the Elite Eight
+
+---------- the Final Four ----------
+
+Florida should beat Duke (56.07% Chance) in the Final Four
+Arizona should beat Michigan (50.81% Chance) in the Final Four
+
+---------- the Championship ----------
+
+Florida should beat Arizona (59.61% Chance) in the Championship
