@@ -184,8 +184,9 @@ def UpdateCommons(stats):
             case _:
                 pass
 
-def ExtractStats(row):
+def ExtractStats(row, seed):
     stats = {
+        "seed": seed,
         "srs": float(row.find('td', attrs={"data-stat": "srs"}).text),
         "sos": float(row.find('td', attrs={"data-stat": "sos"}).text),
         "fg_pct": float(row.find('td', attrs={"data-stat": "fg_pct"}).text),
@@ -199,10 +200,36 @@ def ExtractStats(row):
 
 def CompareStats(roundteams, winners):
     global srrows
+    global seeds
     global dataset
 
     index = 0
     newsrrows = []
+    newseeds = []
+    # print(len(seeds))
+    if (len(roundteams) == 4):
+        tempteams = []
+        tempteams.append(roundteams[0])
+        tempteams.append(roundteams[2])
+        tempteams.append(roundteams[1])
+        tempteams.append(roundteams[3])
+        tempseeds = []
+        tempseeds.append(seeds[0])
+        tempseeds.append(seeds[2])
+        tempseeds.append(seeds[1])
+        tempseeds.append(seeds[3])
+        tempsrrows = []
+        tempsrrows.append(srrows[0])
+        tempsrrows.append(srrows[2])
+        tempsrrows.append(srrows[1])
+        tempsrrows.append(srrows[3])
+        roundteams = tempteams
+        seeds = tempseeds
+        srrows = tempsrrows
+        # print(roundteams)
+        # print(seeds)
+        # for row in srrows:
+        #     print(row.find('a').text)
 
     while index < len(roundteams)-1:
         if winners.count(roundteams[index]) == 1:
@@ -214,11 +241,13 @@ def CompareStats(roundteams, winners):
 
         newsrrows.append(srrows[winnerind])
 
-        w_stats = ExtractStats(srrows[winnerind])
-        l_stats = ExtractStats(srrows[loserind])
+        w_stats = ExtractStats(srrows[winnerind], seeds[winnerind])
+        l_stats = ExtractStats(srrows[loserind], seeds[loserind])
+        newseeds.append(seeds[winnerind])
 
         # Build feature differences
         features = [
+            (w_stats["seed"] - l_stats["seed"])*0.8,
             w_stats["srs"] - l_stats["srs"],
             w_stats["sos"] - l_stats["sos"],
             w_stats["fg_pct"] - l_stats["fg_pct"],
@@ -237,11 +266,12 @@ def CompareStats(roundteams, winners):
         dataset.append((flipped, 0))
 
         index += 2
-
     srrows = newsrrows
+    seeds = newseeds
 
 def PredictGame(teamA, teamB):
     features = [
+        teamA["seed"] - teamB["seed"],
         teamA["srs"] - teamB["srs"],
         teamA["sos"] - teamB["sos"],
         teamA["fg_pct"] - teamB["fg_pct"],
@@ -266,7 +296,7 @@ def Pick_winner(teamA_name, teamA_stats, teamB_name, teamB_stats):
     else:
         return teamB_name, teamA_name, probB
 
-def PredictRound(teamsremaining, statrows):
+def PredictRound(teamsremaining, statrows, seedsremaining):
     currentround = ""
     match len(teamsremaining):
         case 64:
@@ -286,19 +316,29 @@ def PredictRound(teamsremaining, statrows):
         
     winners = []
     winnerrows = []
+    winnerseeds = []
     file.write(f"---------- {currentround} ----------\n\n")
 
     ind = 0
     while ind < len(teamsremaining)-1:
-        winner, loser, confidence = Pick_winner(teamsremaining[ind], ExtractStats(statrows[ind]), teamsremaining[ind+1], ExtractStats(statrows[ind+1]))
+        winner, loser, confidence = Pick_winner(teamsremaining[ind], ExtractStats(statrows[ind], seedsremaining[ind]), 
+                                                teamsremaining[ind+1], ExtractStats(statrows[ind+1], seedsremaining[ind+1]))
+        if winner == teamsremaining[ind]:
+            wseed = seedsremaining[ind]
+            lseed = seedsremaining[ind+1]
+        else:
+            wseed = seedsremaining[ind+1]
+            lseed = seedsremaining[ind]
 
-        file.write(f"{winner} should beat {loser} ({100*confidence:.2f}% Chance) in {currentround}\n")
+        file.write(f"{winner} (No. {wseed}) should beat {loser} (No. {lseed}) ({100*confidence:.2f}% Chance) in {currentround}\n")
         if winner == teamsremaining[ind]:
             winners.append(teamsremaining[ind])
             winnerrows.append(statrows[ind])
+            winnerseeds.append(seedsremaining[ind])
         else:
             winners.append(teamsremaining[ind+1])
             winnerrows.append(statrows[ind+1])
+            winnerseeds.append(seedsremaining[ind+1])
         ind += 2
     if len(winners) == 4: #Matchups are incorrect going into final 4
         tempwinners = []
@@ -311,14 +351,20 @@ def PredictRound(teamsremaining, statrows):
         temprows.append(winnerrows[2])
         temprows.append(winnerrows[1])
         temprows.append(winnerrows[3])
+        tempseeds = []
+        tempseeds.append(winnerseeds[0])
+        tempseeds.append(winnerseeds[2])
+        tempseeds.append(winnerseeds[1])
+        tempseeds.append(winnerseeds[3])
         winners = tempwinners
         winnerrows = temprows
+        winnerseeds = tempseeds
         file.write("\n")
     elif len(winners) == 1: #added for readability
         pass
     else:
         file.write("\n")
-    return winners, winnerrows
+    return winners, winnerrows, winnerseeds
         
 #---------- Main Code ----------#
 
@@ -331,6 +377,11 @@ while year < date.today().year-1:
     trb = 0
     ast = 0
     stl = 0
+    seeds = [1,16,8,9,5,12,4,13,6,11,3,14,7,10,2,15,
+             1,16,8,9,5,12,4,13,6,11,3,14,7,10,2,15,
+             1,16,8,9,5,12,4,13,6,11,3,14,7,10,2,15,
+             1,16,8,9,5,12,4,13,6,11,3,14,7,10,2,15
+    ]
     if year != 2020:
         time.sleep(delay) #So the websites don't get ddosed lol
         r = requests.get(f'https://www.ncaa.com/brackets/basketball-men/d1/{year}#main-content')
@@ -510,13 +561,22 @@ if (len(notfoundteams) > 0): # don't continue if we don't have all the teams
     print(notfoundteams)
     raise ValueError("Error with team names outside loop. Stopping program.")
 
+seeds = [1,16,8,9,5,12,4,13,6,11,3,14,7,10,2,15,
+        1,16,8,9,5,12,4,13,6,11,3,14,7,10,2,15,
+        1,16,8,9,5,12,4,13,6,11,3,14,7,10,2,15,
+        1,16,8,9,5,12,4,13,6,11,3,14,7,10,2,15
+]
 
 file = open(f"{path}/Data/Results.txt", "w")
 while len(teams) != 1:
-    teams, srrows = PredictRound(teams, srrows)
+    teams, srrows, seeds = PredictRound(teams, srrows, seeds)
+    # if (len(teams) == 4):
+    #     print(seeds)
+    #     print(teams)
+    #     for row in srrows:
+    #         print(row.find('a').text)
 file.close()
 print("Prediction complete!")
 
 # TO DO:
-# - Add seed checks
 # - Add other stats (?)

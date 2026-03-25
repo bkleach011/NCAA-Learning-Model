@@ -1,80 +1,80 @@
 ---------- Round 1 ----------
 
-Duke should beat Siena (87.91% Chance) in Round 1
-Ohio State should beat Texas Christian (60.49% Chance) in Round 1
-St. John's (NY) should beat Northern Iowa (80.03% Chance) in Round 1
-Kansas should beat California Baptist (84.16% Chance) in Round 1
-Louisville should beat South Florida (57.72% Chance) in Round 1
-Michigan State should beat North Dakota State (85.78% Chance) in Round 1
-UCLA should beat UCF (57.20% Chance) in Round 1
-Connecticut should beat Furman (84.59% Chance) in Round 1
-Arizona should beat Long Island University (95.74% Chance) in Round 1
-Utah State should beat Villanova (55.50% Chance) in Round 1
-Wisconsin should beat High Point (77.17% Chance) in Round 1
-Arkansas should beat Hawaii (74.18% Chance) in Round 1
-Brigham Young should beat Texas (57.25% Chance) in Round 1
-Gonzaga should beat Kennesaw State (88.10% Chance) in Round 1
-Miami (FL) should beat Missouri (58.38% Chance) in Round 1
-Purdue should beat Queens (NC) (87.84% Chance) in Round 1
-Florida should beat Prairie View A&M (96.38% Chance) in Round 1
-Iowa should beat Clemson (51.01% Chance) in Round 1
-Vanderbilt should beat McNeese (70.60% Chance) in Round 1
-Nebraska should beat Troy (83.45% Chance) in Round 1
-North Carolina should beat Virginia Commonwealth (67.25% Chance) in Round 1
-Illinois should beat Pennsylvania (95.51% Chance) in Round 1
-Texas A&M should beat Saint Mary's (51.90% Chance) in Round 1
-Houston should beat Idaho (90.21% Chance) in Round 1
-Michigan should beat Howard (95.70% Chance) in Round 1
-Georgia should beat Saint Louis (76.67% Chance) in Round 1
-Texas Tech should beat Akron (72.19% Chance) in Round 1
-Alabama should beat Hofstra (86.06% Chance) in Round 1
-Tennessee should beat Miami (OH) (84.04% Chance) in Round 1
-Virginia should beat Wright State (81.59% Chance) in Round 1
-Kentucky should beat Santa Clara (63.88% Chance) in Round 1
-Iowa State should beat Tennessee State (79.64% Chance) in Round 1
+Duke (No. 1) should beat Siena (No. 16) (91.95% Chance) in Round 1
+Ohio State (No. 8) should beat Texas Christian (No. 9) (60.25% Chance) in Round 1
+St. John's (NY) (No. 5) should beat Northern Iowa (No. 12) (83.83% Chance) in Round 1
+Kansas (No. 4) should beat California Baptist (No. 13) (85.78% Chance) in Round 1
+Louisville (No. 6) should beat South Florida (No. 11) (62.42% Chance) in Round 1
+Michigan State (No. 3) should beat North Dakota State (No. 14) (89.12% Chance) in Round 1
+UCLA (No. 7) should beat UCF (No. 10) (61.28% Chance) in Round 1
+Connecticut (No. 2) should beat Furman (No. 15) (89.91% Chance) in Round 1
+Arizona (No. 1) should beat Long Island University (No. 16) (97.01% Chance) in Round 1
+Utah State (No. 9) should beat Villanova (No. 8) (52.72% Chance) in Round 1
+Wisconsin (No. 5) should beat High Point (No. 12) (78.70% Chance) in Round 1
+Arkansas (No. 4) should beat Hawaii (No. 13) (77.71% Chance) in Round 1
+Brigham Young (No. 6) should beat Texas (No. 11) (66.78% Chance) in Round 1
+Gonzaga (No. 3) should beat Kennesaw State (No. 14) (91.32% Chance) in Round 1
+Miami (FL) (No. 7) should beat Missouri (No. 10) (63.41% Chance) in Round 1
+Purdue (No. 2) should beat Queens (NC) (No. 15) (90.99% Chance) in Round 1
+Florida (No. 1) should beat Prairie View A&M (No. 16) (96.84% Chance) in Round 1
+Clemson (No. 8) should beat Iowa (No. 9) (53.92% Chance) in Round 1
+Vanderbilt (No. 5) should beat McNeese (No. 12) (74.36% Chance) in Round 1
+Nebraska (No. 4) should beat Troy (No. 13) (84.64% Chance) in Round 1
+North Carolina (No. 6) should beat Virginia Commonwealth (No. 11) (70.34% Chance) in Round 1
+Illinois (No. 3) should beat Pennsylvania (No. 14) (96.24% Chance) in Round 1
+Saint Mary's (No. 7) should beat Texas A&M (No. 10) (60.38% Chance) in Round 1
+Houston (No. 2) should beat Idaho (No. 15) (93.41% Chance) in Round 1
+Michigan (No. 1) should beat Howard (No. 16) (96.29% Chance) in Round 1
+Georgia (No. 8) should beat Saint Louis (No. 9) (72.90% Chance) in Round 1
+Texas Tech (No. 5) should beat Akron (No. 12) (73.93% Chance) in Round 1
+Alabama (No. 4) should beat Hofstra (No. 13) (87.25% Chance) in Round 1
+Tennessee (No. 6) should beat Miami (OH) (No. 11) (81.04% Chance) in Round 1
+Virginia (No. 3) should beat Wright State (No. 14) (87.36% Chance) in Round 1
+Kentucky (No. 7) should beat Santa Clara (No. 10) (64.90% Chance) in Round 1
+Iowa State (No. 2) should beat Tennessee State (No. 15) (83.88% Chance) in Round 1
 
 ---------- Round 2 ----------
 
-Duke should beat Ohio State (65.14% Chance) in Round 2
-Kansas should beat St. John's (NY) (52.27% Chance) in Round 2
-Michigan State should beat Louisville (52.22% Chance) in Round 2
-Connecticut should beat UCLA (57.04% Chance) in Round 2
-Arizona should beat Utah State (72.21% Chance) in Round 2
-Wisconsin should beat Arkansas (53.10% Chance) in Round 2
-Brigham Young should beat Gonzaga (50.32% Chance) in Round 2
-Purdue should beat Miami (FL) (59.76% Chance) in Round 2
-Florida should beat Iowa (72.44% Chance) in Round 2
-Vanderbilt should beat Nebraska (58.76% Chance) in Round 2
-Illinois should beat North Carolina (71.48% Chance) in Round 2
-Houston should beat Texas A&M (77.97% Chance) in Round 2
-Michigan should beat Georgia (61.02% Chance) in Round 2
-Alabama should beat Texas Tech (69.45% Chance) in Round 2
-Tennessee should beat Virginia (57.47% Chance) in Round 2
-Kentucky should beat Iowa State (60.81% Chance) in Round 2
+Duke (No. 1) should beat Ohio State (No. 8) (75.68% Chance) in Round 2
+Kansas (No. 4) should beat St. John's (NY) (No. 5) (54.79% Chance) in Round 2
+Michigan State (No. 3) should beat Louisville (No. 6) (58.42% Chance) in Round 2
+Connecticut (No. 2) should beat UCLA (No. 7) (67.32% Chance) in Round 2
+Arizona (No. 1) should beat Utah State (No. 9) (81.81% Chance) in Round 2
+Wisconsin (No. 5) should beat Arkansas (No. 4) (52.49% Chance) in Round 2
+Gonzaga (No. 3) should beat Brigham Young (No. 6) (58.13% Chance) in Round 2
+Purdue (No. 2) should beat Miami (FL) (No. 7) (65.90% Chance) in Round 2
+Florida (No. 1) should beat Clemson (No. 8) (80.66% Chance) in Round 2
+Vanderbilt (No. 5) should beat Nebraska (No. 4) (55.23% Chance) in Round 2
+Illinois (No. 3) should beat North Carolina (No. 6) (75.20% Chance) in Round 2
+Houston (No. 2) should beat Saint Mary's (No. 7) (79.49% Chance) in Round 2
+Michigan (No. 1) should beat Georgia (No. 8) (69.66% Chance) in Round 2
+Alabama (No. 4) should beat Texas Tech (No. 5) (69.82% Chance) in Round 2
+Virginia (No. 3) should beat Tennessee (No. 6) (53.94% Chance) in Round 2
+Iowa State (No. 2) should beat Kentucky (No. 7) (51.73% Chance) in Round 2
 
 ---------- the Sweet Sixteen ----------
 
-Duke should beat Kansas (58.71% Chance) in the Sweet Sixteen
-Michigan State should beat Connecticut (51.81% Chance) in the Sweet Sixteen
-Arizona should beat Wisconsin (62.74% Chance) in the Sweet Sixteen
-Brigham Young should beat Purdue (58.30% Chance) in the Sweet Sixteen
-Florida should beat Vanderbilt (65.96% Chance) in the Sweet Sixteen
-Illinois should beat Houston (54.63% Chance) in the Sweet Sixteen
-Michigan should beat Alabama (54.76% Chance) in the Sweet Sixteen
-Tennessee should beat Kentucky (50.21% Chance) in the Sweet Sixteen
+Duke (No. 1) should beat Kansas (No. 4) (62.32% Chance) in the Sweet Sixteen
+Connecticut (No. 2) should beat Michigan State (No. 3) (51.21% Chance) in the Sweet Sixteen
+Arizona (No. 1) should beat Wisconsin (No. 5) (67.52% Chance) in the Sweet Sixteen
+Gonzaga (No. 3) should beat Purdue (No. 2) (58.68% Chance) in the Sweet Sixteen
+Florida (No. 1) should beat Vanderbilt (No. 5) (71.13% Chance) in the Sweet Sixteen
+Illinois (No. 3) should beat Houston (No. 2) (52.25% Chance) in the Sweet Sixteen
+Michigan (No. 1) should beat Alabama (No. 4) (58.20% Chance) in the Sweet Sixteen
+Virginia (No. 3) should beat Iowa State (No. 2) (55.30% Chance) in the Sweet Sixteen
 
 ---------- the Elite Eight ----------
 
-Duke should beat Michigan State (67.59% Chance) in the Elite Eight
-Arizona should beat Brigham Young (56.00% Chance) in the Elite Eight
-Florida should beat Illinois (52.09% Chance) in the Elite Eight
-Michigan should beat Tennessee (61.68% Chance) in the Elite Eight
+Duke (No. 1) should beat Connecticut (No. 2) (66.98% Chance) in the Elite Eight
+Arizona (No. 1) should beat Gonzaga (No. 3) (57.73% Chance) in the Elite Eight
+Florida (No. 1) should beat Illinois (No. 3) (55.18% Chance) in the Elite Eight
+Michigan (No. 1) should beat Virginia (No. 3) (65.04% Chance) in the Elite Eight
 
 ---------- the Final Four ----------
 
-Florida should beat Duke (56.07% Chance) in the Final Four
-Arizona should beat Michigan (50.81% Chance) in the Final Four
+Florida (No. 1) should beat Duke (No. 1) (56.11% Chance) in the Final Four
+Arizona (No. 1) should beat Michigan (No. 1) (53.03% Chance) in the Final Four
 
 ---------- the Championship ----------
 
-Florida should beat Arizona (59.61% Chance) in the Championship
+Florida (No. 1) should beat Arizona (No. 1) (58.61% Chance) in the Championship
