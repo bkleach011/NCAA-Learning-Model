@@ -184,27 +184,36 @@ def UpdateCommons(stats):
             case _:
                 pass
 
-def ExtractStats(row, seed):
+def ExtractStats(row, orow, seed):
     stats = {
         "seed": seed,
         "srs": float(row.find('td', attrs={"data-stat": "srs"}).text),
         "sos": float(row.find('td', attrs={"data-stat": "sos"}).text),
         "fg_pct": float(row.find('td', attrs={"data-stat": "fg_pct"}).text),
-        "fg3_pct": float(row.find('td', attrs={"data-stat": "fg3_pct"}).text),
+        # "fg3_pct": float(row.find('td', attrs={"data-stat": "fg3_pct"}).text),
         "ft_pct": float(row.find('td', attrs={"data-stat": "ft_pct"}).text),
         "trb_pg": float(row.find('td', attrs={"data-stat": "trb"}).text) / float(row.find('td', attrs={"data-stat": "g"}).text),
-        "ast_pg": float(row.find('td', attrs={"data-stat": "ast"}).text) / float(row.find('td', attrs={"data-stat": "g"}).text),
+        # "ast_pg": float(row.find('td', attrs={"data-stat": "ast"}).text) / float(row.find('td', attrs={"data-stat": "g"}).text),
         "tov_pg": float(row.find('td', attrs={"data-stat": "tov"}).text) / float(row.find('td', attrs={"data-stat": "g"}).text),
+        "pts_allowed_pg": float(orow.find('td', attrs={"data-stat": "opp_pts"}).text) / float(row.find('td', attrs={"data-stat": "g"}).text),  # Opp PTS / games
+        "opp_fg_pct": float(orow.find('td', attrs={"data-stat": "opp_fg_pct"}).text),
+        "opp_tov_pg": float(orow.find('td', attrs={"data-stat": "opp_tov"}).text) / float(row.find('td', attrs={"data-stat": "g"}).text),
+        "point_diff": (float(row.find('td', attrs={"data-stat": "pts"}).text) / float(row.find('td', attrs={"data-stat": "g"}).text)) 
+        - (float(orow.find('td', attrs={"data-stat": "opp_pts"}).text) / float(row.find('td', attrs={"data-stat": "g"}).text)),
+        "tov_margin": (float(row.find('td', attrs={"data-stat": "tov"}).text) / float(row.find('td', attrs={"data-stat": "g"}).text)) 
+        - (float(orow.find('td', attrs={"data-stat": "opp_tov"}).text) / float(row.find('td', attrs={"data-stat": "g"}).text)),
     }
     return stats
 
 def CompareStats(roundteams, winners):
+    global osrrows
     global srrows
     global seeds
     global dataset
 
     index = 0
     newsrrows = []
+    newosrrows = []
     newseeds = []
     # print(len(seeds))
     if (len(roundteams) == 4):
@@ -223,13 +232,21 @@ def CompareStats(roundteams, winners):
         tempsrrows.append(srrows[2])
         tempsrrows.append(srrows[1])
         tempsrrows.append(srrows[3])
+        temposrrows = []
+        temposrrows.append(osrrows[0])
+        temposrrows.append(osrrows[2])
+        temposrrows.append(osrrows[1])
+        temposrrows.append(osrrows[3])
         roundteams = tempteams
         seeds = tempseeds
         srrows = tempsrrows
+        osrrows = temposrrows
         # print(roundteams)
         # print(seeds)
         # for row in srrows:
         #     print(row.find('a').text)
+        # for orow in osrrows:
+        #     print(orow.find('a').text)
 
     while index < len(roundteams)-1:
         if winners.count(roundteams[index]) == 1:
@@ -240,22 +257,28 @@ def CompareStats(roundteams, winners):
             loserind = index
 
         newsrrows.append(srrows[winnerind])
+        newosrrows.append(osrrows[winnerind])
 
-        w_stats = ExtractStats(srrows[winnerind], seeds[winnerind])
-        l_stats = ExtractStats(srrows[loserind], seeds[loserind])
+        w_stats = ExtractStats(srrows[winnerind], osrrows[winnerind], seeds[winnerind])
+        l_stats = ExtractStats(srrows[loserind], osrrows[loserind], seeds[loserind])
         newseeds.append(seeds[winnerind])
 
         # Build feature differences
         features = [
-            (w_stats["seed"] - l_stats["seed"])*0.8,
+            l_stats["seed"] - w_stats["seed"],
             w_stats["srs"] - l_stats["srs"],
             w_stats["sos"] - l_stats["sos"],
             w_stats["fg_pct"] - l_stats["fg_pct"],
-            w_stats["fg3_pct"] - l_stats["fg3_pct"],
+            # w_stats["fg3_pct"] - l_stats["fg3_pct"],
             w_stats["ft_pct"] - l_stats["ft_pct"],
             w_stats["trb_pg"] - l_stats["trb_pg"],
-            w_stats["ast_pg"] - l_stats["ast_pg"],
-            w_stats["tov_pg"] - l_stats["tov_pg"],
+            # w_stats["ast_pg"] - l_stats["ast_pg"],
+            l_stats["tov_pg"] - w_stats["tov_pg"],
+            l_stats["pts_allowed_pg"] - w_stats["pts_allowed_pg"],
+            l_stats["opp_fg_pct"] - w_stats["opp_fg_pct"],
+            w_stats["opp_tov_pg"] - l_stats["opp_tov_pg"],
+            w_stats["point_diff"] - l_stats["point_diff"],
+            w_stats["tov_margin"] - l_stats["tov_margin"],
         ]
 
         # Winner = 1
@@ -266,20 +289,26 @@ def CompareStats(roundteams, winners):
         dataset.append((flipped, 0))
 
         index += 2
+    osrrows = newosrrows
     srrows = newsrrows
     seeds = newseeds
 
 def PredictGame(teamA, teamB):
     features = [
-        teamA["seed"] - teamB["seed"],
+        teamB["seed"] - teamA["seed"],
         teamA["srs"] - teamB["srs"],
         teamA["sos"] - teamB["sos"],
         teamA["fg_pct"] - teamB["fg_pct"],
-        teamA["fg3_pct"] - teamB["fg3_pct"],
+        # teamA["fg3_pct"] - teamB["fg3_pct"],
         teamA["ft_pct"] - teamB["ft_pct"],
         teamA["trb_pg"] - teamB["trb_pg"],
-        teamA["ast_pg"] - teamB["ast_pg"],
-        teamA["tov_pg"] - teamB["tov_pg"],
+        # teamA["ast_pg"] - teamB["ast_pg"],
+        teamB["tov_pg"] - teamA["tov_pg"],
+        teamB["pts_allowed_pg"] - teamA["pts_allowed_pg"],
+        teamB["opp_fg_pct"] - teamA["opp_fg_pct"],
+        teamA["opp_tov_pg"] - teamB["opp_tov_pg"],
+        teamA["point_diff"] - teamB["point_diff"],
+        teamA["tov_margin"] - teamB["tov_margin"],
     ]
 
     features = scaler.transform([features])
@@ -296,7 +325,7 @@ def Pick_winner(teamA_name, teamA_stats, teamB_name, teamB_stats):
     else:
         return teamB_name, teamA_name, probB
 
-def PredictRound(teamsremaining, statrows, seedsremaining):
+def PredictRound(teamsremaining, statrows, ostatrows, seedsremaining):
     currentround = ""
     match len(teamsremaining):
         case 64:
@@ -316,13 +345,14 @@ def PredictRound(teamsremaining, statrows, seedsremaining):
         
     winners = []
     winnerrows = []
+    winnerorows = []
     winnerseeds = []
     file.write(f"---------- {currentround} ----------\n\n")
 
     ind = 0
     while ind < len(teamsremaining)-1:
-        winner, loser, confidence = Pick_winner(teamsremaining[ind], ExtractStats(statrows[ind], seedsremaining[ind]), 
-                                                teamsremaining[ind+1], ExtractStats(statrows[ind+1], seedsremaining[ind+1]))
+        winner, loser, confidence = Pick_winner(teamsremaining[ind], ExtractStats(statrows[ind], ostatrows[ind], seedsremaining[ind]), 
+                                                teamsremaining[ind+1], ExtractStats(statrows[ind+1], ostatrows[ind+1], seedsremaining[ind+1]))
         if winner == teamsremaining[ind]:
             wseed = seedsremaining[ind]
             lseed = seedsremaining[ind+1]
@@ -334,10 +364,12 @@ def PredictRound(teamsremaining, statrows, seedsremaining):
         if winner == teamsremaining[ind]:
             winners.append(teamsremaining[ind])
             winnerrows.append(statrows[ind])
+            winnerorows.append(ostatrows[ind])
             winnerseeds.append(seedsremaining[ind])
         else:
             winners.append(teamsremaining[ind+1])
             winnerrows.append(statrows[ind+1])
+            winnerorows.append(ostatrows[ind+1])
             winnerseeds.append(seedsremaining[ind+1])
         ind += 2
     if len(winners) == 4: #Matchups are incorrect going into final 4
@@ -356,15 +388,21 @@ def PredictRound(teamsremaining, statrows, seedsremaining):
         tempseeds.append(winnerseeds[2])
         tempseeds.append(winnerseeds[1])
         tempseeds.append(winnerseeds[3])
+        temporows = []
+        temporows.append(winnerorows[0])
+        temporows.append(winnerorows[2])
+        temporows.append(winnerorows[1])
+        temporows.append(winnerorows[3])
         winners = tempwinners
         winnerrows = temprows
+        winnerorows = temporows
         winnerseeds = tempseeds
         file.write("\n")
     elif len(winners) == 1: #added for readability
         pass
     else:
         file.write("\n")
-    return winners, winnerrows, winnerseeds
+    return winners, winnerrows, winnerorows, winnerseeds
         
 #---------- Main Code ----------#
 
@@ -460,6 +498,7 @@ while year < date.today().year-1:
 
         #---------- Sports Reference Stats ----------#
 
+        #----- Basic Team Stats -----#
         time.sleep(delay) #So the websites don't get ddosed lol
         link = requests.get(f'https://www.sports-reference.com/cbb/seasons/men/{year+1}-school-stats.html')
         soup = BeautifulSoup(link.content, 'html.parser')
@@ -478,6 +517,22 @@ while year < date.today().year-1:
         if (len(notfoundteams) > 0): # don't continue if we don't have all the teams
             print(notfoundteams)
             raise ValueError("Error with team names inside loop. Stopping program.")
+        
+        #----- Basic Opponent Stats -----#
+        time.sleep(delay) #So the websites don't get ddosed lol
+        link = requests.get(f'https://www.sports-reference.com/cbb/seasons/men/{year+1}-opponent-stats.html')
+        soup = BeautifulSoup(link.content, 'html.parser')
+        schools = soup.find_all('td', attrs={"data-stat": "school_name"})
+        osrrows = [] #sports reference rows
+        notfoundteams = []
+        for team in teams:
+            found = False
+            for school in schools:
+                if school.find('a').text == team:
+                    osrrows.append(school.find_parent('tr'))
+                    found = True
+            if not found:
+                notfoundteams.append(team)
 
         CompareStats(teams, round1winners)
         CompareStats(round1winners, round2winners)
@@ -508,7 +563,7 @@ X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
 
 # Train model
-model = LogisticRegression(max_iter=1000, C=0.1, random_state=42)
+model = LogisticRegression(max_iter=1000, random_state=42)
 model.fit(X_train, y_train)
 
 # Results
@@ -561,6 +616,25 @@ if (len(notfoundteams) > 0): # don't continue if we don't have all the teams
     print(notfoundteams)
     raise ValueError("Error with team names outside loop. Stopping program.")
 
+time.sleep(delay) #So the websites don't get ddosed lol
+link = requests.get(f'https://www.sports-reference.com/cbb/seasons/men/{date.today().year}-opponent-stats.html')
+soup = BeautifulSoup(link.content, 'html.parser')
+schools = soup.find_all('td', attrs={"data-stat": "school_name"})
+osrrows = [] #sports reference rows
+notfoundteams = []
+for team in teams:
+    found = False
+    for school in schools:
+        if school.find('a').text == team:
+            osrrows.append(school.find_parent('tr'))
+            found = True
+    if not found:
+        notfoundteams.append(team)
+
+if (len(notfoundteams) > 0): # don't continue if we don't have all the teams
+    print(notfoundteams)
+    raise ValueError("Error with team names outside loop. Stopping program.")
+
 seeds = [1,16,8,9,5,12,4,13,6,11,3,14,7,10,2,15,
         1,16,8,9,5,12,4,13,6,11,3,14,7,10,2,15,
         1,16,8,9,5,12,4,13,6,11,3,14,7,10,2,15,
@@ -569,14 +643,13 @@ seeds = [1,16,8,9,5,12,4,13,6,11,3,14,7,10,2,15,
 
 file = open(f"{path}/Data/Results.txt", "w")
 while len(teams) != 1:
-    teams, srrows, seeds = PredictRound(teams, srrows, seeds)
+    teams, srrows, osrrows, seeds = PredictRound(teams, srrows, osrrows, seeds)
     # if (len(teams) == 4):
     #     print(seeds)
     #     print(teams)
     #     for row in srrows:
     #         print(row.find('a').text)
+        # for orow in osrrows:
+        #     print(orow.find('a').text)
 file.close()
 print("Prediction complete!")
-
-# TO DO:
-# - Add other stats (?)
